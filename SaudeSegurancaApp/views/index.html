@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saúde e Segurança do Trabalho</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>Gestão Saúde & Segurança</h1>
+      <p>Controle de colaboradores, EPIs, acidentes e inspeções</p>
+    </div>
+    <nav class="menu">
+      <button data-target="dashboard" class="active">Dashboard</button>
+      <button data-target="colaboradores">Colaboradores</button>
+      <button data-target="setores">Setores</button>
+      <button data-target="cargos">Cargos</button>
+      <button data-target="epis">EPIs</button>
+      <button data-target="acidentes">Acidentes</button>
+      <button data-target="exames">Exames</button>
+      <button data-target="treinamentos">Treinamentos</button>
+      <button data-target="inspecoes">Inspeções</button>
+      <button data-target="relatorios">Relatórios</button>
+      <button data-target="consulta">Consulta</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="dashboard" class="page active">
+      <h2>Visão Geral</h2>
+      <div class="summary-grid">
+        <article>
+          <h3>Total de Colaboradores</h3>
+          <p id="summary-colaboradores">0</p>
+        </article>
+        <article>
+          <h3>Total de EPIs</h3>
+          <p id="summary-epis">0</p>
+        </article>
+        <article>
+          <h3>Entregas Pendentes</h3>
+          <p id="summary-entregas">0</p>
+        </article>
+        <article>
+          <h3>Exames Vencidos</h3>
+          <p id="summary-exames">0</p>
+        </article>
+        <article>
+          <h3>Inspeções Agendadas</h3>
+          <p id="summary-inspecoes">0</p>
+        </article>
+      </div>
+      <div class="chart-card">
+        <div class="chart-header">
+          <div>
+            <h3>Acidentes registrados</h3>
+            <p id="chart-summary">Distribuição por gravidade</p>
+          </div>
+        </div>
+        <div id="acidente-chart" class="chart-container"></div>
+      </div>
+      <div class="note">
+        <p>Utilize os módulos do menu para cadastrar, editar, consultar e gerar relatórios das informações de segurança.</p>
+      </div>
+    </section>
+
+    <section id="colaboradores" class="page">
+      <h2>Cadastro de Colaboradores</h2>
+      <form id="form-colaborador" class="form-module">
+        <input type="hidden" id="colaborador-id">
+        <label>Nome completo<span>*</span><input type="text" id="colaborador-nome" required></label>
+        <label>E-mail<span>*</span><input type="email" id="colaborador-email" required></label>
+        <label>Setor<select id="colaborador-setor"></select></label>
+        <label>Cargo<select id="colaborador-cargo"></select></label>
+        <div class="actions">
+          <button type="submit">Salvar Colaborador</button>
+          <button type="button" id="colaborador-limpar">Limpar</button>
+        </div>
+      </form>
+      <div class="table-card">
+        <table id="table-colaboradores">
+          <thead><tr><th>Nome</th><th>E-mail</th><th>Setor</th><th>Cargo</th><th>Ações</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="setores" class="page">
+      <h2>Cadastro de Setores</h2>
+      <form id="form-setor" class="form-module">
+        <input type="hidden" id="setor-id">
+        <label>Nome do setor<span>*</span><input type="text" id="setor-nome" required></label>
+        <label>Descrição<input type="text" id="setor-descricao"></label>
+        <div class="actions">
+          <button type="submit">Salvar Setor</button>
+          <button type="button" id="setor-limpar">Limpar</button>
+        </div>
+      </form>
+      <div class="table-card">
+        <table id="table-setores">
+          <thead><tr><th>Setor</th><th>Descrição</th><th>Ações</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="cargos" class="page">
+      <h2>Cadastro de Cargos</h2>
+      <form id="form-cargo" class="form-module">
+        <input type="hidden" id="cargo-id">
+        <label>Nome do cargo<span>*</span><input type="text" id="cargo-nome" required></label>
+        <label>Descrição<input type="text" id="cargo-descricao"></label>
+        <div class="actions">
+          <button type="submit">Salvar Cargo</button>
+          <button type="button" id="cargo-limpar">Limpar</button>
+        </div>
+      </form>
+      <div class="table-card">
+        <table id="table-cargos">
+          <thead><tr><th>Cargo</th><th>Descrição</th><th>Ações</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="epis" class="page">
+      <h2>Controle de EPIs</h2>
+      <form id="form-epi" class="form-module">
+        <input type="hidden" id="epi-id">
+        <label>Nome do EPI<span>*</span><input type="text" id="epi-nome" required></label>
+        <label>Categoria<span>*</span><input type="text" id="epi-categoria" required></label>
+        <label>Quantidade<span>*</span><input type="number" id="epi-quantidade" min="0" value="0" required></label>
+        <div class="actions">
+          <button type="submit">Salvar EPI</button>
+          <button type="button" id="epi-limpar">Limpar</button>
+        </div>
+      </form>
+      <div class="epi-actions">
+        <button type="button" id="open-entrega-form" class="btn-secondary">Entrega</button>
+        <button type="button" id="open-devolucao-form" class="btn-secondary">Devolução</button>
+      </div>
+      <form id="form-entrega" class="form-module hidden action-form">
+        <input type="hidden" id="entrega-id">
+        <label>Colaborador<select id="entrega-colaborador"></select></label>
+        <label>EPI<select id="entrega-epi"></select></label>
+        <label>Quantidade<span>*</span><input type="number" id="entrega-quantidade" min="1" value="1" required></label>
+        <label>Data de entrega<span>*</span><input type="date" id="entrega-data" required></label>
+        <label>Status<select id="entrega-status"><option value="Pendente">Pendente</option><option value="Concluída">Concluída</option></select></label>
+        <div class="actions">
+          <button type="submit">Salvar Entrega</button>
+          <button type="button" id="entrega-limpar">Limpar</button>
+          <button type="button" id="close-entrega-form">Fechar</button>
+        </div>
+      </form>
+      <form id="form-devolucao" class="form-module hidden action-form">
+        <input type="hidden" id="devolucao-id">
+        <label>Colaborador<select id="devolucao-colaborador"></select></label>
+        <label>EPI<select id="devolucao-epi"></select></label>
+        <label>Quantidade<span>*</span><input type="number" id="devolucao-quantidade" min="1" value="1" required></label>
+        <label>Data da devolução<span>*</span><input type="date" id="devolucao-data" required></label>
+        <div class="actions">
+          <button type="submit">Salvar Devolução</button>
+          <button type="button" id="devolucao-limpar">Limpar</button>
+          <button type="button" id="close-devolucao-form">Fechar</button>
+        </div> 
+      </form>
+      <div class="table-card">
+        <table id="table-epis">
+          <thead><tr><th>EPI</th><th>Categoria</th><th>Quantidade</th><th>Ações</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="table-card">
+        <h3>Devoluções de EPIs</h3>
+        <table id="table-devolucoes">
+          <thead><tr><th>Colaborador</th><th>EPI</th><th>Quantidade</th><th>Data</th><th>Ações</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="acidentes" class="page">
+      <h2>Registro de Acidentes</h2>
+      <form id="form-acidente" class="form-module">
+        <input type="hidden" id="acidente-id">
+        <label>Colaborador<select id="acidente-colaborador"></select></label>
+        <label>Data do acidente<span>*</span><input type="date" id="acidente-data" required></label>
+        <label>Descrição<span>*</span><textarea id="acidente-descricao" rows="3" required></textarea></label>
+        <label>Gravidade<select id="acidente-gravidade"><option value="Leve">Leve</option><option value="Moderada">Moderada</option><option value="Grave">Grave</option></select></label>
+        <div class="actions">
+          <button type="submit">Registrar Acidente</button>
+          <button type="button" id="acidente-limpar">Limpar</button>
+        </div>
+      </form>
+      <div class="table-card">
+        <table id="table-acidentes">
+          <thead><tr><th>Colaborador</th><th>Data</th><th>Gravidade</th><th>Descrição</th><th>Ações</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="exames" class="page">
+      <h2>Cadastro de Exames Médicos</h2>
+      <form id="form-exame" class="form-module">
+        <input type="hidden" id="exame-id">
+        <label>Colaborador<select id="exame-colaborador"></select></label>
+        <label>Data do exame<span>*</span><input type="date" id="exame-data" required></label>
+        <label>Tipo de exame<span>*</span><input type="text" id="exame-tipo" required></label>
+        <label>Resultado<select id="exame-resultado"><option value="Aprovado">Aprovado</option><option value="Restrito">Restrito</option><option value="Reprovado">Reprovado</option></select></label>
+        <div class="actions">
+          <button type="submit">Salvar Exame</button>
+          <button type="button" id="exame-limpar">Limpar</button>
+        </div>
+      </form>
+      <div class="table-card">
+        <table id="table-exames">
+          <thead><tr><th>Colaborador</th><th>Data</th><th>Tipo</th><th>Resultado</th><th>Ações</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="treinamentos" class="page">
+      <h2>Controle de Treinamentos</h2>
+      <form id="form-treinamento" class="form-module">
+        <input type="hidden" id="treinamento-id">
+        <label>Colaborador<select id="treinamento-colaborador"></select></label>
+        <label>Curso<span>*</span><input type="text" id="treinamento-curso" required></label>
+        <label>Data<span>*</span><input type="date" id="treinamento-data" required></label>
+        <label>Status<select id="treinamento-status"><option value="Agendado">Agendado</option><option value="Concluído">Concluído</option></select></label>
+        <div class="actions">
+          <button type="submit">Salvar Treinamento</button>
+          <button type="button" id="treinamento-limpar">Limpar</button>
+        </div>
+      </form>
+      <div class="table-card">
+        <table id="table-treinamentos">
+          <thead><tr><th>Colaborador</th><th>Curso</th><th>Data</th><th>Status</th><th>Ações</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="inspecoes" class="page">
+      <h2>Inspeções de Segurança</h2>
+      <form id="form-inspecao" class="form-module">
+        <input type="hidden" id="inspecao-id">
+        <label>Inspetor<span>*</span><input type="text" id="inspecao-inspetor" required></label>
+        <label>Local<span>*</span><input type="text" id="inspecao-local" required></label>
+        <label>Data<span>*</span><input type="date" id="inspecao-data" required></label>
+        <label>Status<select id="inspecao-status"><option value="Aprovado">Aprovado</option><option value="Atenção">Atenção</option><option value="Reprovado">Reprovado</option></select></label>
+        <label>Notas<textarea id="inspecao-notas" rows="3"></textarea></label>
+        <div class="actions">
+          <button type="submit">Registrar Inspeção</button>
+          <button type="button" id="inspecao-limpar">Limpar</button>
+        </div>
+      </form>
+      <div class="table-card">
+        <table id="table-inspecoes">
+          <thead><tr><th>Data</th><th>Local</th><th>Inspetor</th><th>Status</th><th>Ações</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="relatorios" class="page">
+      <h2>Relatórios Gerais</h2>
+      <div class="report-card">
+        <h3>Resumo Rápido</h3>
+        <ul>
+          <li><strong id="report-colaboradores">0</strong> colaboradores cadastrados</li>
+          <li><strong id="report-epis">0</strong> EPIs registrados</li>
+          <li><strong id="report-entregas">0</strong> entregas realizadas</li>
+          <li><strong id="report-acidentes">0</strong> acidentes registrados</li>
+          <li><strong id="report-exames">0</strong> exames médicos cadastrados</li>
+          <li><strong id="report-treinamentos">0</strong> treinamentos agendados</li>
+          <li><strong id="report-inspecoes">0</strong> inspeções realizadas</li>
+        </ul>
+      </div>
+      <div class="report-actions">
+        <button id="generate-report">Visualizar Relatório</button>
+        <button id="print-report">Imprimir Relatório</button>
+      </div>
+      <div id="report-preview" class="report-preview hidden"></div>
+      <div class="report-card">
+        <h3>Entregas Pendentes</h3>
+        <p id="report-pendentes">Nenhum registro pendente.</p>
+      </div>
+      <div class="report-card">
+        <h3>Exames com vencimento</h3>
+        <p id="report-vencidos">Nenhum exame vencido.</p>
+      </div>
+    </section>
+
+    <section id="consulta" class="page">
+      <h2>Consulta Geral</h2>
+      <div class="search-card">
+        <div class="search-controls">
+          <input id="consulta-query" class="search-input" type="search" placeholder="Pesquisar por nome, EPI, descrição, cargo...">
+          <select id="consulta-tipo" class="search-select">
+            <option value="all">Todos os tipos</option>
+            <option value="colaboradores">Colaboradores</option>
+            <option value="epis">EPIs</option>
+            <option value="acidentes">Acidentes</option>
+            <option value="exames">Exames</option>
+            <option value="treinamentos">Treinamentos</option>
+            <option value="inspecoes">Inspeções</option>
+            <option value="entregas">Entregas</option>
+            <option value="setores">Setores</option>
+            <option value="cargos">Cargos</option>
+          </select>
+          <button id="consulta-buscar" class="btn">Pesquisar</button>
+        </div>
+        <div id="consulta-result" class="search-results">
+          <table class="results-table">
+            <thead><tr><th>Tipo</th><th>Título</th><th>Detalhes</th><th>Data</th><th>Ações</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>App de Gestão de Saúde e Segurança - Simulação de Cadastro, Consulta, Edição e Exclusão.</p>
+  </footer>
+
+  <script src="../models/app.js"></script>
+</body>
+</html>
