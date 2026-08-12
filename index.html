@@ -157,35 +157,36 @@
       </div>
       <form id="form-entrega" class="form-module hidden action-form">
         <input type="hidden" id="entrega-id">
-      <input type="hidden" id="entrega-id">
-      <label for="entrega-colaborador"><span class="label-text">Colaborador</span></label>
-      <select id="entrega-colaborador"></select>
-      <label for="entrega-epi"><span class="label-text">EPI</span></label>
-      <select id="entrega-epi"></select>
-      <label for="entrega-quantidade"><span class="label-text">Quantidade<span class="required">*</span></span></label>
-      <input type="number" id="entrega-quantidade" min="1" value="1" required aria-required="true">
-      <label for="entrega-data"><span class="label-text">Data de entrega<span class="required">*</span></span></label>
-      <input type="date" id="entrega-data" required aria-required="true">
-      <label for="entrega-status"><span class="label-text">Status</span></label>
-      <select id="entrega-status"><option value="Pendente">Pendente</option><option value="Concluída">Concluída</option></select>
+        <h4>Registrar Entrega</h4>
+        <label for="entrega-colaborador"><span class="label-text">Colaborador</span></label>
+        <select id="entrega-colaborador"></select>
+        <label for="entrega-epi"><span class="label-text">EPI</span></label>
+        <select id="entrega-epi"></select>
+        <label for="entrega-quantidade"><span class="label-text">Quantidade<span class="required">*</span></span></label>
+        <input type="number" id="entrega-quantidade" min="1" value="1" required aria-required="true">
+        <label for="entrega-data"><span class="label-text">Data de entrega<span class="required">*</span></span></label>
+        <input type="date" id="entrega-data" required aria-required="true">
+        <label for="entrega-status"><span class="label-text">Status</span></label>
+        <select id="entrega-status"><option value="Pendente">Pendente</option><option value="Concluída">Concluída</option></select>
         <div class="actions">
-          <button type="submit">Salvar Entrega</button>
+          <button type="submit" class="btn-primary">Salvar Entrega</button>
           <button type="button" id="entrega-limpar">Limpar</button>
           <button type="button" id="close-entrega-form">Fechar</button>
         </div>
       </form>
       <form id="form-devolucao" class="form-module hidden action-form">
-      <input type="hidden" id="devolucao-id">
-      <label for="devolucao-colaborador"><span class="label-text">Colaborador</span></label>
-      <select id="devolucao-colaborador"></select>
-      <label for="devolucao-epi"><span class="label-text">EPI</span></label>
-      <select id="devolucao-epi"></select>
-      <label for="devolucao-quantidade"><span class="label-text">Quantidade<span class="required">*</span></span></label>
-      <input type="number" id="devolucao-quantidade" min="1" value="1" required aria-required="true">
-      <label for="devolucao-data"><span class="label-text">Data da devolução<span class="required">*</span></span></label>
-      <input type="date" id="devolucao-data" required aria-required="true">
+        <input type="hidden" id="devolucao-id">
+        <h4>Registrar Devolução</h4>
+        <label for="devolucao-colaborador"><span class="label-text">Colaborador</span></label>
+        <select id="devolucao-colaborador"></select>
+        <label for="devolucao-epi"><span class="label-text">EPI</span></label>
+        <select id="devolucao-epi"></select>
+        <label for="devolucao-quantidade"><span class="label-text">Quantidade<span class="required">*</span></span></label>
+        <input type="number" id="devolucao-quantidade" min="1" value="1" required aria-required="true">
+        <label for="devolucao-data"><span class="label-text">Data da devolução<span class="required">*</span></span></label>
+        <input type="date" id="devolucao-data" required aria-required="true">
         <div class="actions">
-          <button type="submit">Salvar Devolução</button>
+          <button type="submit" class="btn-primary">Salvar Devolução</button>
           <button type="button" id="devolucao-limpar">Limpar</button>
           <button type="button" id="close-devolucao-form">Fechar</button>
         </div> 
