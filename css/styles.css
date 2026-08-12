@@ -155,6 +155,17 @@ h2 {
   font-size: 0.95rem;
 }
 
+.form-module label .label-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-module label .required {
+  color: var(--primary);
+  font-weight: 700;
+}
+
 .form-module input,
 .form-module select,
 .form-module textarea {

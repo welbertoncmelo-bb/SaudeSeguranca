@@ -71,8 +71,8 @@
       <h2>Cadastro de Colaboradores</h2>
       <form id="form-colaborador" class="form-module">
         <input type="hidden" id="colaborador-id">
-        <label>Nome completo<span>*</span><input type="text" id="colaborador-nome" required></label>
-        <label>E-mail<span>*</span><input type="email" id="colaborador-email" required></label>
+        <label><span class="label-text">Nome completo<span class="required">*</span></span><input type="text" id="colaborador-nome" required></label>
+        <label><span class="label-text">E-mail<span class="required">*</span></span><input type="email" id="colaborador-email" required></label>
         <label>Setor<select id="colaborador-setor"></select></label>
         <label>Cargo<select id="colaborador-cargo"></select></label>
         <div class="actions">
@@ -92,8 +92,8 @@
       <h2>Cadastro de Setores</h2>
       <form id="form-setor" class="form-module">
         <input type="hidden" id="setor-id">
-        <label>Nome do setor<span>*</span><input type="text" id="setor-nome" required></label>
-        <label>Descrição<input type="text" id="setor-descricao"></label>
+        <label><span class="label-text">Nome do setor<span class="required">*</span></span><input type="text" id="setor-nome" required></label>
+        <label><span class="label-text">Descrição</span><input type="text" id="setor-descricao"></label>
         <div class="actions">
           <button type="submit">Salvar Setor</button>
           <button type="button" id="setor-limpar">Limpar</button>
@@ -111,8 +111,8 @@
       <h2>Cadastro de Cargos</h2>
       <form id="form-cargo" class="form-module">
         <input type="hidden" id="cargo-id">
-        <label>Nome do cargo<span>*</span><input type="text" id="cargo-nome" required></label>
-        <label>Descrição<input type="text" id="cargo-descricao"></label>
+        <label><span class="label-text">Nome do cargo<span class="required">*</span></span><input type="text" id="cargo-nome" required></label>
+        <label><span class="label-text">Descrição</span><input type="text" id="cargo-descricao"></label>
         <div class="actions">
           <button type="submit">Salvar Cargo</button>
           <button type="button" id="cargo-limpar">Limpar</button>
@@ -130,9 +130,9 @@
       <h2>Controle de EPIs</h2>
       <form id="form-epi" class="form-module">
         <input type="hidden" id="epi-id">
-        <label>Nome do EPI<span>*</span><input type="text" id="epi-nome" required></label>
-        <label>Categoria<span>*</span><input type="text" id="epi-categoria" required></label>
-        <label>Quantidade<span>*</span><input type="number" id="epi-quantidade" min="0" value="0" required></label>
+        <label><span class="label-text">Nome do EPI<span class="required">*</span></span><input type="text" id="epi-nome" required></label>
+        <label><span class="label-text">Categoria<span class="required">*</span></span><input type="text" id="epi-categoria" required></label>
+        <label><span class="label-text">Quantidade<span class="required">*</span></span><input type="number" id="epi-quantidade" min="0" value="0" required></label>
         <div class="actions">
           <button type="submit">Salvar EPI</button>
           <button type="button" id="epi-limpar">Limpar</button>
@@ -144,11 +144,12 @@
       </div>
       <form id="form-entrega" class="form-module hidden action-form">
         <input type="hidden" id="entrega-id">
-        <label>Colaborador<select id="entrega-colaborador"></select></label>
-        <label>EPI<select id="entrega-epi"></select></label>
-        <label>Quantidade<span>*</span><input type="number" id="entrega-quantidade" min="1" value="1" required></label>
-        <label>Data de entrega<span>*</span><input type="date" id="entrega-data" required></label>
-        <label>Status<select id="entrega-status"><option value="Pendente">Pendente</option><option value="Concluída">Concluída</option></select></label>
+      <input type="hidden" id="entrega-id">
+      <label><span class="label-text">Colaborador</span><select id="entrega-colaborador"></select></label>
+      <label><span class="label-text">EPI</span><select id="entrega-epi"></select></label>
+      <label><span class="label-text">Quantidade<span class="required">*</span></span><input type="number" id="entrega-quantidade" min="1" value="1" required></label>
+      <label><span class="label-text">Data de entrega<span class="required">*</span></span><input type="date" id="entrega-data" required></label>
+      <label><span class="label-text">Status</span><select id="entrega-status"><option value="Pendente">Pendente</option><option value="Concluída">Concluída</option></select></label>
         <div class="actions">
           <button type="submit">Salvar Entrega</button>
           <button type="button" id="entrega-limpar">Limpar</button>
@@ -156,11 +157,11 @@
         </div>
       </form>
       <form id="form-devolucao" class="form-module hidden action-form">
-        <input type="hidden" id="devolucao-id">
-        <label>Colaborador<select id="devolucao-colaborador"></select></label>
-        <label>EPI<select id="devolucao-epi"></select></label>
-        <label>Quantidade<span>*</span><input type="number" id="devolucao-quantidade" min="1" value="1" required></label>
-        <label>Data da devolução<span>*</span><input type="date" id="devolucao-data" required></label>
+      <input type="hidden" id="devolucao-id">
+      <label><span class="label-text">Colaborador</span><select id="devolucao-colaborador"></select></label>
+      <label><span class="label-text">EPI</span><select id="devolucao-epi"></select></label>
+      <label><span class="label-text">Quantidade<span class="required">*</span></span><input type="number" id="devolucao-quantidade" min="1" value="1" required></label>
+      <label><span class="label-text">Data da devolução<span class="required">*</span></span><input type="date" id="devolucao-data" required></label>
         <div class="actions">
           <button type="submit">Salvar Devolução</button>
           <button type="button" id="devolucao-limpar">Limpar</button>
@@ -186,10 +187,10 @@
       <h2>Registro de Acidentes</h2>
       <form id="form-acidente" class="form-module">
         <input type="hidden" id="acidente-id">
-        <label>Colaborador<select id="acidente-colaborador"></select></label>
-        <label>Data do acidente<span>*</span><input type="date" id="acidente-data" required></label>
-        <label>Descrição<span>*</span><textarea id="acidente-descricao" rows="3" required></textarea></label>
-        <label>Gravidade<select id="acidente-gravidade"><option value="Leve">Leve</option><option value="Moderada">Moderada</option><option value="Grave">Grave</option></select></label>
+        <label><span class="label-text">Colaborador</span><select id="acidente-colaborador"></select></label>
+        <label><span class="label-text">Data do acidente<span class="required">*</span></span><input type="date" id="acidente-data" required></label>
+        <label><span class="label-text">Descrição<span class="required">*</span></span><textarea id="acidente-descricao" rows="3" required></textarea></label>
+        <label><span class="label-text">Gravidade</span><select id="acidente-gravidade"><option value="Leve">Leve</option><option value="Moderada">Moderada</option><option value="Grave">Grave</option></select></label>
         <div class="actions">
           <button type="submit">Registrar Acidente</button>
           <button type="button" id="acidente-limpar">Limpar</button>
@@ -207,10 +208,10 @@
       <h2>Cadastro de Exames Médicos</h2>
       <form id="form-exame" class="form-module">
         <input type="hidden" id="exame-id">
-        <label>Colaborador<select id="exame-colaborador"></select></label>
-        <label>Data do exame<span>*</span><input type="date" id="exame-data" required></label>
-        <label>Tipo de exame<span>*</span><input type="text" id="exame-tipo" required></label>
-        <label>Resultado<select id="exame-resultado"><option value="Aprovado">Aprovado</option><option value="Restrito">Restrito</option><option value="Reprovado">Reprovado</option></select></label>
+        <label><span class="label-text">Colaborador</span><select id="exame-colaborador"></select></label>
+        <label><span class="label-text">Data do exame<span class="required">*</span></span><input type="date" id="exame-data" required></label>
+        <label><span class="label-text">Tipo de exame<span class="required">*</span></span><input type="text" id="exame-tipo" required></label>
+        <label><span class="label-text">Resultado</span><select id="exame-resultado"><option value="Aprovado">Aprovado</option><option value="Restrito">Restrito</option><option value="Reprovado">Reprovado</option></select></label>
         <div class="actions">
           <button type="submit">Salvar Exame</button>
           <button type="button" id="exame-limpar">Limpar</button>
@@ -228,10 +229,10 @@
       <h2>Controle de Treinamentos</h2>
       <form id="form-treinamento" class="form-module">
         <input type="hidden" id="treinamento-id">
-        <label>Colaborador<select id="treinamento-colaborador"></select></label>
-        <label>Curso<span>*</span><input type="text" id="treinamento-curso" required></label>
-        <label>Data<span>*</span><input type="date" id="treinamento-data" required></label>
-        <label>Status<select id="treinamento-status"><option value="Agendado">Agendado</option><option value="Concluído">Concluído</option></select></label>
+        <label><span class="label-text">Colaborador</span><select id="treinamento-colaborador"></select></label>
+        <label><span class="label-text">Curso<span class="required">*</span></span><input type="text" id="treinamento-curso" required></label>
+        <label><span class="label-text">Data<span class="required">*</span></span><input type="date" id="treinamento-data" required></label>
+        <label><span class="label-text">Status</span><select id="treinamento-status"><option value="Agendado">Agendado</option><option value="Concluído">Concluído</option></select></label>
         <div class="actions">
           <button type="submit">Salvar Treinamento</button>
           <button type="button" id="treinamento-limpar">Limpar</button>
@@ -249,9 +250,9 @@
       <h2>Inspeções de Segurança</h2>
       <form id="form-inspecao" class="form-module">
         <input type="hidden" id="inspecao-id">
-        <label>Inspetor<span>*</span><input type="text" id="inspecao-inspetor" required></label>
-        <label>Local<span>*</span><input type="text" id="inspecao-local" required></label>
-        <label>Data<span>*</span><input type="date" id="inspecao-data" required></label>
+        <label><span class="label-text">Inspetor<span class="required">*</span></span><input type="text" id="inspecao-inspetor" required></label>
+        <label><span class="label-text">Local<span class="required">*</span></span><input type="text" id="inspecio-local" required></label>
+        <label><span class="label-text">Data<span class="required">*</span></span><input type="date" id="inspecao-data" required></label>
         <label>Status<select id="inspecao-status"><option value="Aprovado">Aprovado</option><option value="Atenção">Atenção</option><option value="Reprovado">Reprovado</option></select></label>
         <label>Notas<textarea id="inspecao-notas" rows="3"></textarea></label>
         <div class="actions">
