@@ -268,7 +268,7 @@ export class AppController {
     }).join('');
 
     this.tables.epis.innerHTML = filterData(this.repository.epis).map(epi => `
-      <tr>
+      <tr data-id="${epi.id}" class="epi-row">
         <td>${epi.nome}</td>
         <td>${epi.categoria}</td>
         <td>${epi.quantidade}</td>
@@ -673,6 +673,7 @@ export class AppController {
     } else {
       this.showMessage('Entrega salva', 'info');
     }
+    if (epiId) this.highlightRow('epis', epiId);
   }
 
   saveDevolucao(event) {
@@ -713,6 +714,21 @@ export class AppController {
     } else {
       this.showMessage('Devolução salva', 'info');
     }
+    if (epiId) this.highlightRow('epis', epiId);
+  }
+
+  highlightRow(collectionName, id) {
+    // only supports epis for now
+    if (collectionName !== 'epis') return;
+    const table = this.tables.epis;
+    if (!table) return;
+    const row = table.querySelector(`tr[data-id="${id}"]`);
+    if (!row) return;
+    row.classList.remove('row-highlight');
+    // trigger reflow to restart animation
+    void row.offsetWidth;
+    row.classList.add('row-highlight');
+    setTimeout(() => row.classList.remove('row-highlight'), 2200);
   }
 
   saveAcidente(event) {

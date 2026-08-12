@@ -125,6 +125,7 @@ main {
     gap: 8px;
     overflow-x: auto;
     margin-left: auto;
+    display: none; /* hidden by default, toggle via .menu-open on body */
   }
   main {
     margin-left: 0;
@@ -134,6 +135,33 @@ main {
     padding: 10px 12px;
     white-space: nowrap;
   }
+}
+
+/* show menu when toggled */
+body.menu-open .menu {
+  display: flex;
+  position: absolute;
+  top: 64px;
+  left: 16px;
+  right: 16px;
+  background: var(--surface);
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  gap: 8px;
+  z-index: 9999;
+}
+
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  padding: 6px 8px;
+}
+
+@media (max-width: 900px) {
+  .menu-toggle { display: inline-block; }
 }
 
 .page {
@@ -565,6 +593,16 @@ button[onclick^="app.delete"]:hover,
 .results-table tbody tr:hover,
 .report-table-card tbody tr:hover {
   background: #f5f9ff;
+}
+
+.row-highlight {
+  animation: highlightFade 2s ease-in-out;
+}
+
+@keyframes highlightFade {
+  0% { background: #fff7d6; }
+  50% { background: #fffbe6; }
+  100% { background: transparent; }
 }
 
 .search-card {
