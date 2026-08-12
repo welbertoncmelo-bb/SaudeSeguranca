@@ -743,7 +743,29 @@ button[onclick^="app.delete"]:hover,
   display: flex;
   gap: 14px;
   align-items: center;
-  margin-bottom: 28px;
+  margin-bottom: 0; /* we'll visually overlap the following card */
+  position: relative;
+  z-index: 3;
+  transform: translateY(20px); /* push the buttons down to overlap next card */
+}
+
+/* Make the following report cards sit below the overlapping buttons */
+.report-card {
+  position: relative;
+  z-index: 1;
+  margin-top: 34px;
+}
+
+/* Restore normal flow on small screens */
+@media (max-width: 640px) {
+  .report-actions {
+    transform: none;
+    position: static;
+    margin-bottom: 12px;
+  }
+  .report-card {
+    margin-top: 0;
+  }
 }
 
 .report-preview-title {
