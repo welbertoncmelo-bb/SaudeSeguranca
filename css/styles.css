@@ -595,6 +595,7 @@ button[onclick^="app.delete"]:hover,
   padding: 20px 18px;
   border-bottom: 1px solid rgba(148, 163, 184, 0.15);
   text-align: left;
+  vertical-align: middle;
 }
 
 .table-card th,
@@ -608,6 +609,29 @@ button[onclick^="app.delete"]:hover,
 .results-table tbody tr:hover,
 .report-table-card tbody tr:hover {
   background: #f5f9ff;
+}
+
+/* Normalize action buttons inside table cells to reduce visual weight */
+.table-card td > button,
+.results-table td > button,
+.report-table-card td > button,
+.table-card td .actions button,
+.results-table td .actions button,
+.report-table-card td .actions button {
+  padding: 6px 10px;
+  height: 36px;
+  line-height: 1;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.table-card td > button + button,
+.results-table td > button + button,
+.report-table-card td > button + button {
+  margin-left: 8px;
 }
 
 .row-highlight {
