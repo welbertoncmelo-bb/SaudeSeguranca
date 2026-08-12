@@ -3,15 +3,27 @@
   --surface: #ffffff;
   --surface-soft: #f8fbff;
   --surface-secondary: #eef4ff;
-  --border: #d1e0f0;
-  --primary: #2563eb;
-  --primary-soft: #dbeafe;
-  --accent: #0ea5e9;
-  --success: #14b8a6;
-  --warning: #f59e0b;
-  --text: #0f172a;
-  --muted: #64748b;
-  --shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+  --border: #cfdff0;
+  --primary: #1e40af; /* darker/more saturated for stronger CTAs */
+  --primary-soft: #cfe0ff;
+  --accent: #0284c7;
+  --success: #0f766e;
+  --warning: #d97706;
+  --text: #071024;
+  --muted: #51667a;
+  --shadow: 0 28px 60px rgba(15, 23, 42, 0.12);
+
+  /* Visual scale tokens (aggressive) */
+  --fs-xxl: 2.6rem; /* very large headings */
+  --fs-xl: 2rem;
+  --fs-lg: 1.125rem;
+  --fs-md: 1rem;
+  --fs-sm: 0.9rem;
+  --btn-padding: 16px 22px;
+  --input-padding: 14px 18px;
+  --btn-radius: 20px;
+  --control-radius: 18px;
+  --section-gap: 28px;
 }
 
 *, *::before, *::after {
@@ -22,8 +34,9 @@ html, body {
   margin: 0;
   min-height: 100%;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: linear-gradient(180deg, #f4f7fb 0%, #eef3fb 100%);
+  background: linear-gradient(180deg, var(--bg) 0%, #eef3fb 100%);
   color: var(--text);
+  font-size: 16px;
 }
 
 button, input, select, textarea {
@@ -58,15 +71,15 @@ img {
 
 .brand h1 {
   margin: 0;
-  font-size: 1.8rem;
-  letter-spacing: -0.04em;
+  font-size: var(--fs-xxl);
+  letter-spacing: -0.03em;
 }
 
 .brand p {
-  margin: 10px 0 0;
+  margin: 8px 0 0;
   color: var(--muted);
-  line-height: 1.7;
-  font-size: 0.95rem;
+  line-height: 1.6;
+  font-size: var(--fs-md);
 }
 
 .menu {
@@ -80,10 +93,11 @@ img {
   background: var(--surface-soft);
   color: var(--text);
   text-align: left;
-  padding: 14px 18px;
-  border-radius: 18px;
-  transition: transform 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
-  font-weight: 600;
+  padding: var(--btn-padding);
+  border-radius: var(--btn-radius);
+  transition: transform 0.18s ease, background-color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  font-weight: 700;
+  font-size: var(--fs-md);
 }
 
 .menu button:hover {
@@ -97,8 +111,8 @@ img {
 }
 
 main {
-  margin-left: 340px;
-  padding: 40px 36px;
+  margin-left: 380px;
+  padding: 44px 48px;
   min-height: 100vh;
 }
 
@@ -207,7 +221,7 @@ h2 {
 
 .form-module {
   display: grid;
-  gap: 18px;
+  gap: var(--section-gap);
 }
 
 .form-module label {
@@ -233,8 +247,8 @@ h2 {
 .form-module select,
 .form-module textarea {
   width: 100%;
-  padding: 14px 18px;
-  border-radius: 18px;
+  padding: var(--input-padding);
+  border-radius: var(--control-radius);
   border: 1px solid var(--border);
   background: var(--surface-soft);
   color: var(--text);
@@ -396,9 +410,10 @@ textarea {
 button,
 .btn {
   border: none;
-  border-radius: 18px;
-  padding: 14px 20px;
-  font-weight: 700;
+  border-radius: var(--btn-radius);
+  padding: var(--btn-padding);
+  font-weight: 800;
+  font-size: var(--fs-md);
   transition: transform 0.18s ease, background-color 0.18s ease, filter 0.18s ease, box-shadow 0.18s ease;
 }
 
@@ -577,7 +592,7 @@ button[onclick^="app.delete"]:hover,
 .results-table td,
 .report-table-card th,
 .report-table-card td {
-  padding: 16px 14px;
+  padding: 20px 18px;
   border-bottom: 1px solid rgba(148, 163, 184, 0.15);
   text-align: left;
 }
