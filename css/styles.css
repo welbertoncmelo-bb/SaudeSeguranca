@@ -331,6 +331,15 @@ textarea {
   gap: 16px;
 }
 
+/* Ensure action groups inside forms/cards have spacing below them so
+   buttons don't sit flush against the next card */
+.form-module .actions,
+.search-card .actions,
+.report-card .actions,
+.card .actions {
+  margin-bottom: 20px;
+}
+
 .epi-actions {
   display: flex;
   flex-wrap: wrap;
