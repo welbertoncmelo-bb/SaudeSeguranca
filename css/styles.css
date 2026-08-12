@@ -151,7 +151,7 @@ h2 {
 .form-module label {
   display: grid;
   gap: 10px;
-  color: var(--muted);
+  color: #000;
   font-size: 0.95rem;
 }
 
@@ -159,11 +159,11 @@ h2 {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: var(--muted);
+  color: inherit;
 }
 
 .form-module label .required {
-  color: var(--primary);
+  color: #dc2626;
   font-weight: 700;
 }
 
