@@ -738,6 +738,14 @@ button[onclick^="app.delete"]:hover,
   background: linear-gradient(135deg, var(--primary), var(--accent));
 }
 
+/* Ensure the report action group is clearly separated from following content */
+.report-actions {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
 .report-preview-title {
   display: flex;
   justify-content: space-between;
