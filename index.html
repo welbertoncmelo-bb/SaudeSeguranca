@@ -8,6 +8,8 @@
   
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
+  <div id="message" role="status" aria-live="polite" class="sr-only"></div>
   <header class="topbar">
     <div class="brand">
       <h1>Gestão Saúde & Segurança</h1>
@@ -28,7 +30,7 @@
     </nav>
   </header>
 
-  <main>
+  <main id="main-content">
     <section id="dashboard" class="page active">
       <h2>Visão Geral</h2>
       <div class="summary-grid">
@@ -71,10 +73,14 @@
       <h2>Cadastro de Colaboradores</h2>
       <form id="form-colaborador" class="form-module">
         <input type="hidden" id="colaborador-id">
-        <label><span class="label-text">Nome completo<span class="required">*</span></span><input type="text" id="colaborador-nome" required></label>
-        <label><span class="label-text">E-mail<span class="required">*</span></span><input type="email" id="colaborador-email" required></label>
-        <label>Setor<select id="colaborador-setor"></select></label>
-        <label>Cargo<select id="colaborador-cargo"></select></label>
+        <label for="colaborador-nome"><span class="label-text">Nome completo<span class="required">*</span></span></label>
+        <input type="text" id="colaborador-nome" required aria-required="true">
+        <label for="colaborador-email"><span class="label-text">E-mail<span class="required">*</span></span></label>
+        <input type="email" id="colaborador-email" required aria-required="true">
+        <label for="colaborador-setor"><span class="label-text">Setor</span></label>
+        <select id="colaborador-setor" aria-required="false"></select>
+        <label for="colaborador-cargo"><span class="label-text">Cargo</span></label>
+        <select id="colaborador-cargo" aria-required="false"></select>
         <div class="actions">
           <button type="submit">Salvar Colaborador</button>
           <button type="button" id="colaborador-limpar">Limpar</button>
@@ -92,8 +98,10 @@
       <h2>Cadastro de Setores</h2>
       <form id="form-setor" class="form-module">
         <input type="hidden" id="setor-id">
-        <label><span class="label-text">Nome do setor<span class="required">*</span></span><input type="text" id="setor-nome" required></label>
-        <label><span class="label-text">Descrição</span><input type="text" id="setor-descricao"></label>
+        <label for="setor-nome"><span class="label-text">Nome do setor<span class="required">*</span></span></label>
+        <input type="text" id="setor-nome" required aria-required="true">
+        <label for="setor-descricao"><span class="label-text">Descrição</span></label>
+        <input type="text" id="setor-descricao">
         <div class="actions">
           <button type="submit">Salvar Setor</button>
           <button type="button" id="setor-limpar">Limpar</button>
@@ -111,8 +119,10 @@
       <h2>Cadastro de Cargos</h2>
       <form id="form-cargo" class="form-module">
         <input type="hidden" id="cargo-id">
-        <label><span class="label-text">Nome do cargo<span class="required">*</span></span><input type="text" id="cargo-nome" required></label>
-        <label><span class="label-text">Descrição</span><input type="text" id="cargo-descricao"></label>
+        <label for="cargo-nome"><span class="label-text">Nome do cargo<span class="required">*</span></span></label>
+        <input type="text" id="cargo-nome" required aria-required="true">
+        <label for="cargo-descricao"><span class="label-text">Descrição</span></label>
+        <input type="text" id="cargo-descricao">
         <div class="actions">
           <button type="submit">Salvar Cargo</button>
           <button type="button" id="cargo-limpar">Limpar</button>
@@ -130,9 +140,12 @@
       <h2>Controle de EPIs</h2>
       <form id="form-epi" class="form-module">
         <input type="hidden" id="epi-id">
-        <label><span class="label-text">Nome do EPI<span class="required">*</span></span><input type="text" id="epi-nome" required></label>
-        <label><span class="label-text">Categoria<span class="required">*</span></span><input type="text" id="epi-categoria" required></label>
-        <label><span class="label-text">Quantidade<span class="required">*</span></span><input type="number" id="epi-quantidade" min="0" value="0" required></label>
+        <label for="epi-nome"><span class="label-text">Nome do EPI<span class="required">*</span></span></label>
+        <input type="text" id="epi-nome" required aria-required="true">
+        <label for="epi-categoria"><span class="label-text">Categoria<span class="required">*</span></span></label>
+        <input type="text" id="epi-categoria" required aria-required="true">
+        <label for="epi-quantidade"><span class="label-text">Quantidade<span class="required">*</span></span></label>
+        <input type="number" id="epi-quantidade" min="0" value="0" required aria-required="true">
         <div class="actions">
           <button type="submit">Salvar EPI</button>
           <button type="button" id="epi-limpar">Limpar</button>
@@ -145,11 +158,16 @@
       <form id="form-entrega" class="form-module hidden action-form">
         <input type="hidden" id="entrega-id">
       <input type="hidden" id="entrega-id">
-      <label><span class="label-text">Colaborador</span><select id="entrega-colaborador"></select></label>
-      <label><span class="label-text">EPI</span><select id="entrega-epi"></select></label>
-      <label><span class="label-text">Quantidade<span class="required">*</span></span><input type="number" id="entrega-quantidade" min="1" value="1" required></label>
-      <label><span class="label-text">Data de entrega<span class="required">*</span></span><input type="date" id="entrega-data" required></label>
-      <label><span class="label-text">Status</span><select id="entrega-status"><option value="Pendente">Pendente</option><option value="Concluída">Concluída</option></select></label>
+      <label for="entrega-colaborador"><span class="label-text">Colaborador</span></label>
+      <select id="entrega-colaborador"></select>
+      <label for="entrega-epi"><span class="label-text">EPI</span></label>
+      <select id="entrega-epi"></select>
+      <label for="entrega-quantidade"><span class="label-text">Quantidade<span class="required">*</span></span></label>
+      <input type="number" id="entrega-quantidade" min="1" value="1" required aria-required="true">
+      <label for="entrega-data"><span class="label-text">Data de entrega<span class="required">*</span></span></label>
+      <input type="date" id="entrega-data" required aria-required="true">
+      <label for="entrega-status"><span class="label-text">Status</span></label>
+      <select id="entrega-status"><option value="Pendente">Pendente</option><option value="Concluída">Concluída</option></select>
         <div class="actions">
           <button type="submit">Salvar Entrega</button>
           <button type="button" id="entrega-limpar">Limpar</button>
@@ -158,10 +176,14 @@
       </form>
       <form id="form-devolucao" class="form-module hidden action-form">
       <input type="hidden" id="devolucao-id">
-      <label><span class="label-text">Colaborador</span><select id="devolucao-colaborador"></select></label>
-      <label><span class="label-text">EPI</span><select id="devolucao-epi"></select></label>
-      <label><span class="label-text">Quantidade<span class="required">*</span></span><input type="number" id="devolucao-quantidade" min="1" value="1" required></label>
-      <label><span class="label-text">Data da devolução<span class="required">*</span></span><input type="date" id="devolucao-data" required></label>
+      <label for="devolucao-colaborador"><span class="label-text">Colaborador</span></label>
+      <select id="devolucao-colaborador"></select>
+      <label for="devolucao-epi"><span class="label-text">EPI</span></label>
+      <select id="devolucao-epi"></select>
+      <label for="devolucao-quantidade"><span class="label-text">Quantidade<span class="required">*</span></span></label>
+      <input type="number" id="devolucao-quantidade" min="1" value="1" required aria-required="true">
+      <label for="devolucao-data"><span class="label-text">Data da devolução<span class="required">*</span></span></label>
+      <input type="date" id="devolucao-data" required aria-required="true">
         <div class="actions">
           <button type="submit">Salvar Devolução</button>
           <button type="button" id="devolucao-limpar">Limpar</button>
@@ -187,10 +209,14 @@
       <h2>Registro de Acidentes</h2>
       <form id="form-acidente" class="form-module">
         <input type="hidden" id="acidente-id">
-        <label><span class="label-text">Colaborador</span><select id="acidente-colaborador"></select></label>
-        <label><span class="label-text">Data do acidente<span class="required">*</span></span><input type="date" id="acidente-data" required></label>
-        <label><span class="label-text">Descrição<span class="required">*</span></span><textarea id="acidente-descricao" rows="3" required></textarea></label>
-        <label><span class="label-text">Gravidade</span><select id="acidente-gravidade"><option value="Leve">Leve</option><option value="Moderada">Moderada</option><option value="Grave">Grave</option></select></label>
+        <label for="acidente-colaborador"><span class="label-text">Colaborador</span></label>
+        <select id="acidente-colaborador"></select>
+        <label for="acidente-data"><span class="label-text">Data do acidente<span class="required">*</span></span></label>
+        <input type="date" id="acidente-data" required aria-required="true">
+        <label for="acidente-descricao"><span class="label-text">Descrição<span class="required">*</span></span></label>
+        <textarea id="acidente-descricao" rows="3" required aria-required="true"></textarea>
+        <label for="acidente-gravidade"><span class="label-text">Gravidade</span></label>
+        <select id="acidente-gravidade"><option value="Leve">Leve</option><option value="Moderada">Moderada</option><option value="Grave">Grave</option></select>
         <div class="actions">
           <button type="submit">Registrar Acidente</button>
           <button type="button" id="acidente-limpar">Limpar</button>
@@ -208,10 +234,14 @@
       <h2>Cadastro de Exames Médicos</h2>
       <form id="form-exame" class="form-module">
         <input type="hidden" id="exame-id">
-        <label><span class="label-text">Colaborador</span><select id="exame-colaborador"></select></label>
-        <label><span class="label-text">Data do exame<span class="required">*</span></span><input type="date" id="exame-data" required></label>
-        <label><span class="label-text">Tipo de exame<span class="required">*</span></span><input type="text" id="exame-tipo" required></label>
-        <label><span class="label-text">Resultado</span><select id="exame-resultado"><option value="Aprovado">Aprovado</option><option value="Restrito">Restrito</option><option value="Reprovado">Reprovado</option></select></label>
+        <label for="exame-colaborador"><span class="label-text">Colaborador</span></label>
+        <select id="exame-colaborador"></select>
+        <label for="exame-data"><span class="label-text">Data do exame<span class="required">*</span></span></label>
+        <input type="date" id="exame-data" required aria-required="true">
+        <label for="exame-tipo"><span class="label-text">Tipo de exame<span class="required">*</span></span></label>
+        <input type="text" id="exame-tipo" required aria-required="true">
+        <label for="exame-resultado"><span class="label-text">Resultado</span></label>
+        <select id="exame-resultado"><option value="Aprovado">Aprovado</option><option value="Restrito">Restrito</option><option value="Reprovado">Reprovado</option></select>
         <div class="actions">
           <button type="submit">Salvar Exame</button>
           <button type="button" id="exame-limpar">Limpar</button>
@@ -229,10 +259,14 @@
       <h2>Controle de Treinamentos</h2>
       <form id="form-treinamento" class="form-module">
         <input type="hidden" id="treinamento-id">
-        <label><span class="label-text">Colaborador</span><select id="treinamento-colaborador"></select></label>
-        <label><span class="label-text">Curso<span class="required">*</span></span><input type="text" id="treinamento-curso" required></label>
-        <label><span class="label-text">Data<span class="required">*</span></span><input type="date" id="treinamento-data" required></label>
-        <label><span class="label-text">Status</span><select id="treinamento-status"><option value="Agendado">Agendado</option><option value="Concluído">Concluído</option></select></label>
+        <label for="treinamento-colaborador"><span class="label-text">Colaborador</span></label>
+        <select id="treinamento-colaborador"></select>
+        <label for="treinamento-curso"><span class="label-text">Curso<span class="required">*</span></span></label>
+        <input type="text" id="treinamento-curso" required aria-required="true">
+        <label for="treinamento-data"><span class="label-text">Data<span class="required">*</span></span></label>
+        <input type="date" id="treinamento-data" required aria-required="true">
+        <label for="treinamento-status"><span class="label-text">Status</span></label>
+        <select id="treinamento-status"><option value="Agendado">Agendado</option><option value="Concluído">Concluído</option></select>
         <div class="actions">
           <button type="submit">Salvar Treinamento</button>
           <button type="button" id="treinamento-limpar">Limpar</button>
@@ -250,11 +284,16 @@
       <h2>Inspeções de Segurança</h2>
       <form id="form-inspecao" class="form-module">
         <input type="hidden" id="inspecao-id">
-        <label><span class="label-text">Inspetor<span class="required">*</span></span><input type="text" id="inspecao-inspetor" required></label>
-        <label><span class="label-text">Local<span class="required">*</span></span><input type="text" id="inspecio-local" required></label>
-        <label><span class="label-text">Data<span class="required">*</span></span><input type="date" id="inspecao-data" required></label>
-        <label>Status<select id="inspecao-status"><option value="Aprovado">Aprovado</option><option value="Atenção">Atenção</option><option value="Reprovado">Reprovado</option></select></label>
-        <label>Notas<textarea id="inspecao-notas" rows="3"></textarea></label>
+        <label for="inspecao-inspetor"><span class="label-text">Inspetor<span class="required">*</span></span></label>
+        <input type="text" id="inspecao-inspetor" required aria-required="true">
+        <label for="inspecio-local"><span class="label-text">Local<span class="required">*</span></span></label>
+        <input type="text" id="inspecio-local" required aria-required="true">
+        <label for="inspecao-data"><span class="label-text">Data<span class="required">*</span></span></label>
+        <input type="date" id="inspecao-data" required aria-required="true">
+        <label for="inspecao-status"><span class="label-text">Status</span></label>
+        <select id="inspecao-status"><option value="Aprovado">Aprovado</option><option value="Atenção">Atenção</option><option value="Reprovado">Reprovado</option></select>
+        <label for="inspecao-notas"><span class="label-text">Notas</span></label>
+        <textarea id="inspecao-notas" rows="3"></textarea>
         <div class="actions">
           <button type="submit">Registrar Inspeção</button>
           <button type="button" id="inspecao-limpar">Limpar</button>
@@ -330,6 +369,6 @@
     <p>App de Gestão de Saúde e Segurança - Simulação de Cadastro, Consulta, Edição e Exclusão.</p>
   </footer>
 
-  <script src="models/app.js"></script>
+  <script src="models/app.js" defer></script>
 </body>
 </html>

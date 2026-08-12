@@ -346,6 +346,18 @@ class AppController {
     this.renderReports();
   }
 
+  showMessage(text, type = 'info') {
+    const msgEl = document.getElementById('message');
+    if (!msgEl) return;
+    msgEl.textContent = text;
+    msgEl.classList.add('show');
+    // keep for screen readers as well
+    msgEl.setAttribute('data-type', type);
+    setTimeout(() => {
+      msgEl.classList.remove('show');
+    }, 3000);
+  }
+
   renderSelects() {
     const options = list => list.map(item => `<option value="${item.id}">${item.nome || item.curso || item.local || item.email}</option>`).join('');
 
@@ -705,6 +717,7 @@ class AppController {
     }
     this.clearForm('setor');
     this.refreshAll();
+    this.showMessage('Setor salvo');
   }
 
   saveCargo(event) {
@@ -720,6 +733,7 @@ class AppController {
     }
     this.clearForm('cargo');
     this.refreshAll();
+    this.showMessage('Cargo salvo');
   }
 
   saveColaborador(event) {
@@ -737,6 +751,7 @@ class AppController {
     }
     this.clearForm('colaborador');
     this.refreshAll();
+    this.showMessage('Colaborador salvo');
   }
 
   saveEPI(event) {
@@ -753,6 +768,7 @@ class AppController {
     }
     this.clearForm('epi');
     this.refreshAll();
+    this.showMessage('EPI salvo');
   }
 
   saveEntrega(event) {
@@ -790,6 +806,7 @@ class AppController {
 
     this.clearForm('entrega');
     this.refreshAll();
+    this.showMessage('Entrega salva');
   }
 
   saveDevolucao(event) {
@@ -821,6 +838,7 @@ class AppController {
 
     this.clearForm('devolucao');
     this.refreshAll();
+    this.showMessage('Devolução salva');
   }
 
   saveAcidente(event) {
@@ -838,6 +856,7 @@ class AppController {
     }
     this.clearForm('acidente');
     this.refreshAll();
+    this.showMessage('Acidente registrado');
   }
 
   saveExame(event) {
@@ -855,6 +874,7 @@ class AppController {
     }
     this.clearForm('exame');
     this.refreshAll();
+    this.showMessage('Exame salvo');
   }
 
   saveTreinamento(event) {
@@ -872,6 +892,7 @@ class AppController {
     }
     this.clearForm('treinamento');
     this.refreshAll();
+    this.showMessage('Treinamento salvo');
   }
 
   saveInspecao(event) {
@@ -890,6 +911,7 @@ class AppController {
     }
     this.clearForm('inspecao');
     this.refreshAll();
+    this.showMessage('Inspeção salva');
   }
 
   editSetor(id) {
