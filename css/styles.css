@@ -228,6 +228,19 @@ h2 {
   display: block;
 }
 
+#message[data-type="success"] {
+  background: linear-gradient(180deg, #064e3b, #065f46);
+  color: #e6fffa;
+}
+#message[data-type="error"] {
+  background: linear-gradient(180deg, #831843, #991b1b);
+  color: #fff5f5;
+}
+#message[data-type="info"] {
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+}
+
 textarea {
   min-height: 110px;
   resize: vertical;

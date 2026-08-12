@@ -661,9 +661,18 @@ export class AppController {
       }
     }
 
+    // feedback detalhado
+    const epiObj = this.repository.findById(epiId, 'epis');
+    const colObj = this.repository.findById(colaboradorId, 'colaboradores');
+    const newStock = epiObj ? epiObj.quantidade : null;
+
     this.clearForm('entrega');
     this.refreshAll();
-    this.showMessage('Entrega salva');
+    if (epiObj && colObj) {
+      this.showMessage(`Entrega registrada: ${quantidade}× ${epiObj.nome} para ${colObj.nome}. Estoque: ${newStock}`, 'success');
+    } else {
+      this.showMessage('Entrega salva', 'info');
+    }
   }
 
   saveDevolucao(event) {
@@ -693,9 +702,17 @@ export class AppController {
       this.repository.update(epi, 'epis');
     }
 
+    const epiObj = this.repository.findById(epiId, 'epis');
+    const colObj = this.repository.findById(colaboradorId, 'colaboradores');
+    const newStock = epiObj ? epiObj.quantidade : null;
+
     this.clearForm('devolucao');
     this.refreshAll();
-    this.showMessage('Devolução salva');
+    if (epiObj && colObj) {
+      this.showMessage(`Devolução registrada: ${quantidade}× ${epiObj.nome} de ${colObj.nome}. Estoque: ${newStock}`, 'success');
+    } else {
+      this.showMessage('Devolução salva', 'info');
+    }
   }
 
   saveAcidente(event) {
