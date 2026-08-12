@@ -292,6 +292,11 @@ textarea {
   min-height: 220px;
 }
 
+.action-form {
+  position: relative;
+  padding-bottom: 72px; /* reserve space for absolute actions */
+}
+
 .action-form .fields {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -306,10 +311,24 @@ textarea {
 }
 
 .action-form .actions {
-  margin-top: auto;
   display: flex;
   gap: 10px;
   justify-content: flex-end;
+  position: absolute;
+  right: 22px;
+  bottom: 18px;
+}
+
+@media (max-width: 640px) {
+  .action-form {
+    padding-bottom: 20px;
+  }
+  .action-form .actions {
+    position: static;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+  }
 }
 
 button,
